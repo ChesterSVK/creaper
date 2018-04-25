@@ -53,8 +53,7 @@ public class ChangeJdbcAttributesOnlineTest {
                         .build());
         offlineClient.apply(CONFIGURATION_BACKUP.backup());
 
-        offlineClient.apply(TransactionManager.basicAttributes().useJournalStore(false).build());
-        
+        onlineClient.apply(TransactionManager.basicAttributes().useJournalStore(false).build());
         controller.start(ManualTests.ARQUILLIAN_CONTAINER);
     }
 
