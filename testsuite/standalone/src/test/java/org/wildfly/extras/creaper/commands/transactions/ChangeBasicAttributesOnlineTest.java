@@ -218,6 +218,12 @@ public class ChangeBasicAttributesOnlineTest {
     @Test
     @InSequence(3)
     public void stopServer() throws CommandFailedException, IOException {
+        OnlineCommand cmd = TransactionManager.basicAttributes()
+                .useJournalStore(false)
+                .build();
+
+        onlineClient.apply(cmd);
+
         controller.stop(ManualTests.ARQUILLIAN_CONTAINER);
         offlineClient.apply(CONFIGURATION_BACKUP.restore());
     }
